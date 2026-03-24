@@ -5,10 +5,14 @@ void main () {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Flutter Demo'),
+          backgroundColor: Colors.red,
+          title: Center(child: Text('Flutter App')),
         ),
         body: Center(
-          child: Text('Hello, World!'),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [Text('Hello, World!'), Icon(Icons.favorite, color: Colors.red)],
+          ),
         ),
       ),
     )
