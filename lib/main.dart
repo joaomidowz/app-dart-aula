@@ -1,11 +1,41 @@
 import 'package:flutter/material.dart';
 
-void main () {
+void main() {
   runApp(MeuApp());
 }
 
-class MeuApp extends StatlessWidget {
-  MeuApp((super.key));
+class PaginaInicial extends StatefulWidget {
+  const PaginaInicial({super.key});
+
+  @override
+  State<PaginaInicial> createState() => _PaginaInicialState();
+}
+
+class _PaginaInicialState extends State<PaginaInicial> {
+  String texto = "Hello, World!";
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        children: [
+          Text(texto),
+          ElevatedButton(
+            child: Text('muda texto!'),
+            onPressed: () {
+              setState(() {
+                texto = "texto legal 123";
+              });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class MeuApp extends StatelessWidget {
+  const MeuApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +45,8 @@ class MeuApp extends StatlessWidget {
           backgroundColor: Colors.red,
           title: Center(child: Text('Flutter App')),
         ),
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [Text('Hello, World!'), Icon(Icons.favorite, color: Colors.red)],
-          ),
-        ),
+        body: PaginaInicial(),
       ),
-    )
-  );
+    );
+  }
 }
