@@ -13,6 +13,9 @@ class PaginaInicial extends StatefulWidget {
 
 class _PaginaInicialState extends State<PaginaInicial> {
   String texto = "Hello, World!";
+  int counter = 0;
+  final TextEditingController _textEditingController = TextEditingController();
+  String nome = "";
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +23,25 @@ class _PaginaInicialState extends State<PaginaInicial> {
       child: Column(
         children: [
           Text(texto),
+          TextField(
+            controller: _textEditingController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+              labelText: 'Clique aqui para digitar seu nome',
+            ),
+          ),
           ElevatedButton(
-            child: Text('muda texto!'),
+            child: Text('Clique em mim!!'),
             onPressed: () {
+              nome = _textEditingController.text;
               setState(() {
-                texto = "texto legal 123";
+                if (nome.isEmpty) {
+                  texto = "Hello, World!";
+                } else {
+                  texto = "Olá, $nome!";
+                }
               });
             },
           ),
